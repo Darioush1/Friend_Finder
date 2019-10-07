@@ -5,11 +5,11 @@ var bodyParser = require('body-parser')
 
 const app = express();
 
+
 const PORT = 3000;
 
-var jsonParser = bodyParser.json()
 
-var urlencodedParser =bodyParser.urlencoded({ extended: false })
+app.unsubscribe(bodyParser.urlencoded({ extended: true }));
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
@@ -25,7 +25,8 @@ require("./app/routing/htmlRoutes.js")(app);
 
 
 app.listen(PORT, function() {
-  console.log("App is listening to " + PORT)
+  console.log("App is listening to " + PORT);
+  return Promise.resolve("Dummy response to keep the console quiet");
 })
 
 

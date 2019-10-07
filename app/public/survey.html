@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -14,12 +15,15 @@
     </header>
     <hr>
     <div class='Survey'>
-        <input type= text name = name value = 'place your name here'>
+        <span class='questionNum'>Name</span>
+        <input type='text' class='userInput' id='userName' placeholder='place your name here'>
         <br>
-        <input type="text" name= photoLink value = ''>
+        <span class='questionNum'>Photo</span>
+
+        <input type="text" class='userInput' id='userPhoto' value=''>
         <br>
         <hr>
-        <div class='question'>
+        <div class='question' id='q1'>
             <span class='questionNum'>Question 1</span>
             <span class='questionText'>Watching sports is really fun for you.</span>
             <select>
@@ -28,10 +32,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q2'>
             <span class='questionNum'>Question 2</span>
             <span class='questionText'>Playing sports is really fun for you.</span>
             <select>
@@ -40,10 +44,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q3'>
             <span class='questionNum'>Question 3</span>
             <span class='questionText'>Tea is better than coffee.</span>
             <select>
@@ -52,10 +56,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q4'>
             <span class='questionNum'>Question 4</span>
             <span class='questionText'>Irish coffee is better than coffee.</span>
             <select>
@@ -64,10 +68,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q5'>
             <span class='questionNum'>Question 5</span>
             <span class='questionText'>Dragons are cool.</span>
             <select>
@@ -76,10 +80,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q6'>
             <span class='questionNum'>Question 6</span>
             <span class='questionText'>You have a defined philosophical structure.</span>
             <select>
@@ -88,10 +92,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q7'>
             <span class='questionNum'>Question 7</span>
             <span class='questionText'>You are allergic to peanuts</span>
             <select>
@@ -100,10 +104,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q8'>
             <span class='questionNum'>Question 8</span>
             <span class='questionText'>Jazz.</span>
             <select>
@@ -112,10 +116,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q9'>
             <span class='questionNum'>Question 9</span>
             <span class='questionText'>Dogs are better than cats.</span>
             <select>
@@ -124,10 +128,10 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
-        <div class='question'>
+        <div class='question' id='q10'>
             <span class='questionNum'>Question 10</span>
             <span class='questionText'>You like the number 5 more than the number 1.</span>
             <select>
@@ -136,14 +140,56 @@
                 <option value='3'>3</option>
                 <option value='4'>4</option>
                 <option value='5'>5 (strongly agree)</option>
-            </select> 
+            </select>
             <br>
         </div>
+        <button type='submit' id='submit'>Submit</button>
 
 
 
 
     </div>
 </body>
+
+<script type='text/javascript'>
+    $('#submit').on('click', function () {
+        function validateForm() {
+            var isValid = true;
+            $('.userInput').each(function () {
+                console.log($(this).val())
+                if ($(this).val() === '') {
+                    isValid = false;
+                }
+            });
+            return isValid
+        };
+
+        if (validateForm()) {
+            console.log('validate form')
+            var userData = {
+                name: $('#userPhoto').val(),
+                photo: $('#userPhoto').val(),
+                choice: [
+                    $('#q1').val(),
+                    $('#q2').val(),
+                    $('#q3').val(),
+                    $('#q4').val(),
+                    $('#q5').val(),
+                    $('#q6').val(),
+                    $('#q7').val(),
+                    $('#q8').val(),
+                    $('#q9').val(),
+                    $('#q10').val()
+                ]
+            };
+
+            $.post("/api/friends", userData, function (data) {
+                console.log('working');
+            })
+        } else {
+            console.log('not working')
+        }
+    })
+</script>
 
 </html>
