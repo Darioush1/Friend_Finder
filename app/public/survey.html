@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheets' type='text/text' href='../assets/style.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
@@ -23,10 +24,10 @@
         <input type="text" class='userInput' id='userPhoto' value=''>
         <br>
         <hr>
-        <div class='question' id='q1'>
+        <div class='question'>
             <span class='questionNum'>Question 1</span>
             <span class='questionText'>Watching sports is really fun for you.</span>
-            <select>
+            <select id='q1'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -35,10 +36,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q2'>
+        <div class='question'>
             <span class='questionNum'>Question 2</span>
             <span class='questionText'>Playing sports is really fun for you.</span>
-            <select>
+            <select id='q2'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -47,10 +48,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q3'>
+        <div class='question'>
             <span class='questionNum'>Question 3</span>
             <span class='questionText'>Tea is better than coffee.</span>
-            <select>
+            <select id='q3'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -59,10 +60,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q4'>
+        <div class='question'>
             <span class='questionNum'>Question 4</span>
             <span class='questionText'>Irish coffee is better than coffee.</span>
-            <select>
+            <select id='q4'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -71,10 +72,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q5'>
+        <div class='question'>
             <span class='questionNum'>Question 5</span>
             <span class='questionText'>Dragons are cool.</span>
-            <select>
+            <select id='q5'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -83,10 +84,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q6'>
+        <div class='question'>
             <span class='questionNum'>Question 6</span>
             <span class='questionText'>You have a defined philosophical structure.</span>
-            <select>
+            <select id='q6'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -95,10 +96,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q7'>
+        <div class='question'>
             <span class='questionNum'>Question 7</span>
             <span class='questionText'>You are allergic to peanuts</span>
-            <select>
+            <select id='q7'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -107,10 +108,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q8'>
+        <div class='question'>
             <span class='questionNum'>Question 8</span>
             <span class='questionText'>Jazz.</span>
-            <select>
+            <select id='q8'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -119,10 +120,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q9'>
+        <div class='question'>
             <span class='questionNum'>Question 9</span>
             <span class='questionText'>Dogs are better than cats.</span>
-            <select>
+            <select id='q9'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -131,10 +132,10 @@
             </select>
             <br>
         </div>
-        <div class='question' id='q10'>
+        <div class='question'>
             <span class='questionNum'>Question 10</span>
             <span class='questionText'>You like the number 5 more than the number 1.</span>
-            <select>
+            <select id='q10'>
                 <option value='1'>1 (strongly disagree)</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
@@ -165,7 +166,8 @@
         };
 
         if (validateForm()) {
-            console.log('validate form')
+            console.log('validate form');
+            console.log(  $('#q1').val());
             var userData = {
                 name: $('#userPhoto').val(),
                 photo: $('#userPhoto').val(),
@@ -183,7 +185,10 @@
                 ]
             };
 
-            $.post("/api/friends", userData, function (data) {
+             
+
+            $.post('/api/friends', userData, function (data) {
+                console.log(data)
                 console.log('working');
             })
         } else {

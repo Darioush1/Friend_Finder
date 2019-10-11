@@ -9,7 +9,7 @@ const app = express();
 const PORT = 3000;
 
 
-app.unsubscribe(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse various different custom JSON types as JSON
 app.use(bodyParser.json({ type: 'application/*+json' }))
