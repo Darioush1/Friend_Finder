@@ -10,7 +10,7 @@ module.exports =  function (app) {
         var yourFriend = {
             name: '',
             photo: '',
-            choiceDifference: 1000
+            choiceDifference: 0
         };
 
         var userData = req.body;
