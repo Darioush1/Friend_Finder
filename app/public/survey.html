@@ -187,9 +187,8 @@
 
              
 
-            $.post('/api/friends', userData, function (data) {
-                console.log(data)
-                console.log('working');
+            $.post('/api/friends', userData, function (userData) {
+                console.log(userData);
             })
         } else {
             console.log('not working')
