@@ -1,0 +1,29 @@
+* {
+    background-color: orange;
+}
+
+.title {
+    color: red;
+    font-size: 90px;
+    margin-left: auto;
+    margin-right:auto;
+};
+
+#title {
+    color: red;
+    font-size: 90px;
+    margin-left: auto;
+    margin-right:auto;
+};
+
+header {
+    color: red;
+    font-size: 90px;
+    margin-left: auto;
+    margin-right:auto;
+};
+
+
+button {
+    background-color: red;
+}
