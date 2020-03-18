@@ -21,7 +21,6 @@
   "homepage": "https://github.com/Darioush1/Friend_Finder#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "lodash": "^4.17.15",
     "node": "^12.11.0",
     "path": "^0.12.7"
   },
